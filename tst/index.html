@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Management Data Strategy Advisor</title>
+    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* Minimalist, high-contrast style */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            color: #1f2937; /* Dark gray text */
+        }
+        .main-content {
+            max-width: 600px;
+            width: 95%;
+            text-align: center;
+            background-color: #ffffff;
+            border-radius: 0.5rem;
+        }
+        .curiosity-button {
+            transition: background-color 0.1s;
+        }
+        .curiosity-button:hover {
+            background-color: #4b5563; /* Darker gray on hover */
+        }
+        .content-box {
+            min-height: 120px;
+            border-left: 2px solid #1f2937; /* Dark accent line */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-content rounded-xl p-6 sm:p-10">
+
+        <!-- Fixed Professional Line --><div id="intro-section" class="mb-10">
+            <h1 class="text-xl sm:text-2xl font-normal text-gray-900 mb-6">
+                I advise investment management firms on data strategy and AI.
+            </h1>
+            <p class="text-sm text-gray-500">
+                Find me on <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank" class="text-gray-800 hover:text-black underline font-medium">LinkedIn</a>.
+            </p>
+        </div>
+
+        <!-- Curiosity Button --><button id="curiosityButton" class="curiosity-button w-20 h-20 bg-gray-900 text-white text-4xl font-extrabold rounded-full focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-opacity-50 mb-10">
+            →
+        </button>
+
+        <!-- Dynamic Content Display (Now hidden on load) --><div id="contentDisplay" class="content-box p-4 sm:p-6 bg-gray-50 rounded-lg text-left transition duration-500 ease-in-out hidden">
+        </div>
+
+    </div>
+
+<script>
+    // --- Random Content Engine ---
+
+    const contentArray = [
+        // --- 21 AI Haiku ---
+        { type: 'AI Haiku', title: 'The Paper Strategy', text: 'New models compute / Strategy is still paper / Hands tied by the past.' },
+        { type: 'AI Haiku', title: 'Hedge Fund Haiku', text: 'Silent code runs fast / Market chaos, clean data / Profit, deep blue sky.' },
+        { type: 'AI Haiku', title: 'The Cost of Zero', text: 'The cost of zero / Hidden debt in old systems / Slow death of insight.' },
+        { type: 'AI Haiku', title: 'New Flow of Insight', text: 'New flow of insight / Alpha signal in the noise / Wealth finds its new home.' },
+        { type: 'AI Haiku', title: 'Regulatory Watch', text: 'Regulators watch / Bias sits inside the code / Ethics is the wall.' },
+        { type: 'AI Haiku', title: 'Cloud Data Lake', text: 'Cloud lights up the night / Data lake begins to form / Truth begins to surface.' },
+        { type: 'AI Haiku', title: 'Legacy Walls', text: 'Legacy walls crack / APIs sing a new song / Speed brings market share.' },
+        { type: 'AI Haiku', title: 'Model Drift Check', text: 'Model drifts slowly / Human check on black box mind / Guard against the fall.' },
+        { type: 'AI Haiku', title: 'Low Latency', text: 'Low latency wins / Millions lost in one tick delay / Time is the main cost.' },
+        { type: 'AI Haiku', title: 'Alternative Data', text: 'Alternative streams / Pictures, satellites, text / Unseen edge appears.' },
+        { type: 'AI Haiku', title: 'Feature Store', text: 'Feature store grows rich / Shared knowledge, models build fast / No wasted effort.' },
+        { type: 'AI Haiku', title: 'Data Cleanse', text: 'Data cleanse is harsh / Scrubbing, mapping, unifying / Trust is born of pain.' },
+        { type: 'AI Haiku', title: 'Risk View', text: 'Risk is just a view / Stress test fails the known model / Unknown waits outside.' },
+        { type: 'AI Haiku', title: 'Vector Search', text: 'Old SQL retires / Vector search takes the stage / Meaning is the key.' },
+        { type: 'AI Haiku', title: 'Trading Floor', text: 'Trading floor quiet / Machines talk in silent tongue / Volume tells the tale.' },
+        { type: 'AI Haiku', title: 'Cold Storage', text: 'Cold storage dust sleeps / Data waits for the query / Value yet unseen.' },
+        { type: 'AI Haiku', title: 'Quant Mind', text: 'The new quant mind / Learns patterns from the chaos / Predict, then execute.' },
+        { type: 'AI Haiku', title: 'Pipeline Path', text: 'Pipeline is the path / From raw bytes to final trade / Governance controls.' },
+        { type: 'AI Haiku', title: 'Irrational Flow', text: 'Reason takes a break / Prices swing without logic / Fear buys, greed then sells.' },
+        { type: 'AI Haiku', title: 'Dark Data', text: 'Dark data whispers / Secrets hidden in the logs / We must learn to hear.' },
+        { type: 'AI Haiku', title: 'Final Backtest', text: 'The final backtest / Paper trade becomes the real / Faith meets the market.' },
+
+        // --- 10 Image Viz ---
+        {
+            type: 'Image Viz',
+            title: 'Conceptual Viz: The Sentiment Friction Map',
+            text: 'Visualizing sentiment dispersion across asset classes. High friction (slow spread, red areas) indicates potential overlooked opportunity; low friction (fast spread, green areas) suggests consensus trade and potential risk.',
+            img_url: 'http://googleusercontent.com/image_generation_content/0'
+        },
+        {
+            type: 'Image Viz',
+            title: 'Data Lineage Graph',
+            text: 'A network graph illustrating the full audit trail of a critical data point from ingestion to model prediction, highlighting trust checkpoints.',
+            img_url: 'https://placehold.co/600x400/1f2937/ffffff?text=Data+Lineage+Graph'
+        },
+        {
+            type: 'Image Viz',
+            title: 'Model Explainability Waterfall',
+            text: 'A SHAP-value inspired waterfall chart showing feature contribution to a trade decision, designed for regulatory review.',
+            img_url: 'https://placehold.co/600x400/374151/ffffff?text=Model+Explainability+Waterfall'
+        },
+        {
+            type: 'Image Viz',
+            title: 'AI Regulatory Risk Matrix',
+            text: 'A 4x4 matrix mapping model complexity against governance maturity to identify high-risk deployments under new global AI mandates.',
+            img_url: 'https://placehold.co/600x400/111827/ffffff?text=AI+Regulatory+Risk+Matrix'
+        },
+        {
+            type: 'Image Viz',
+            title: 'Alpha Decay Curve',
+            text: 'A time-series plot demonstrating how quickly a novel alpha signal degrades after its initial discovery, proving the need for continuous model evolution.',
+            img_url: 'https://placehold.co/600x400/4b5563/ffffff?text=Alpha+Decay+Curve'
+        },
+        {
+            type: 'Image Viz',
+            title: 'Feature Store Architecture Diagram',
+            text: 'A simplified technical blueprint illustrating the centralization of features to ensure consistency and prevent data drift across trading systems.',
+            img_url: 'https://placehold.co/600x400/6b7280/ffffff?text=Feature+Store+Architecture'
+        },
+        {
+            type: 'Image Viz',
+            title: 'Synthetic Data Generation Loop',
+            text: 'A flow chart showing how Generative AI creates privacy-preserving, synthetic market data for robust backtesting and stress-testing.',
+            img_url: 'https://placehold.co/600x400/9ca3af/ffffff?text=Synthetic+Data+Loop'
+        },
+        {
+            type: 'Image Viz',
+            title: 'Cloud Compute Cost Optimization Funnel',
+            text: 'A visualization of the process of identifying and retiring dormant cloud resources to reduce the operational cost of the data platform.',
+            img_url: 'https://placehold.co/600x400/1f2937/ffffff?text=Cloud+Cost+Funnel'
+        },
+        {
+            type: 'Image Viz',
+            title: 'Real-Time Data Ingestion Pipeline',
+            text: 'A schematic showing high-speed data streaming from exchanges through Kafka/PubSub to a low-latency feature store.',
+            img_url: 'https://placehold.co/600x400/374151/ffffff?text=Real-Time+Pipeline'
+        },
+        {
+            type: 'Image Viz',
+            title: 'Unstructured Text Entity Network',
+            text: 'A graph visualization of named entities (people, companies, locations) extracted from earnings call transcripts, showing novel relationships.',
+            img_url: 'https://placehold.co/600x400/111827/ffffff?text=Unstructured+Entity+Network'
+        },
+
+        // --- 10 THOUGHTS ---
+        {
+            type: 'Thought',
+            title: 'The Unbundling of Alpha',
+            text: 'Prediction: The next decade of quant performance won\'t come from a single "mega-model," but from hundreds of highly specialized, narrow AI agents running decentralized and risk-managed processes. Strategy shifts from centralization to orchestration.'
+        },
+        {
+            type: 'Thought',
+            title: 'The Anti-Fragile Data Team',
+            text: 'Insight: Data strategy shouldn\'t focus on preventing failures, but on gaining from disorder. Building data pipelines that improve (get faster, cleaner) every time a new market shock hits is the ultimate competitive edge.'
+        },
+        {
+            type: 'Thought',
+            title: 'The Data Interpretation Crisis',
+            text: 'The next financial crisis won\'t be caused by a lack of data, but by a collective, simultaneous misinterpretation of overwhelming and conflicting data streams.'
+        },
+        {
+            type: 'Thought',
+            title: 'Feature Store Imperative',
+            text: 'The true competitive edge is moving from static, batch-processed data lakes to dynamic feature stores that serve real-time predictions with unified lineage and governance.'
+        },
+        {
+            type: 'Thought',
+            title: 'IT is Perpetual Capability',
+            text: 'The transition from traditional, project-based IT to modern data stacks is not a project with an end date; it\'s a perpetual operational capability requirement that demands continuous evolution.'
+        },
+        {
+            type: 'Thought',
+            title: 'Talent vs. Friction',
+            text: 'Data science talent often fails not due to lack of skill or poor models, but due to internal friction against legacy systems and institutional processes that prevent model deployment.'
+        },
+        {
+            type: 'Thought',
+            title: 'The Regulatory Battleground',
+            text: 'Regulation focused on input data (like transparency) is necessary, but the future battleground for AI compliance will be model output explainability and the auditability of autonomous decisions.'
+        },
+        {
+            type: 'Thought',
+            title: 'The Speed of Data Integration',
+            text: 'The most valuable alternative data source isn\'t the most obscure or expensive, but the one you can ingest, clean, integrate, and operationalize into an alpha signal the fastest.'
+        },
+        {
+            type: 'Thought',
+            title: 'Cloud Adoption Misconception',
+            text: 'Cloud adoption in finance is only 20% about technology selection; the remaining 80% is the painful, necessary work of organizational change management and security policy re-engineering.'
+        },
+        {
+            type: 'Thought',
+            title: 'Self-Referential Models',
+            text: 'The best quantitative models don\'t just predict the next price move; they strategically predict and account for the market\'s potential reaction to their own existence and trading volume.'
+        },
+
+        // --- 10 QUESTIONS TO PONDER ---
+        {
+            type: 'Question to Ponder',
+            title: 'Strategy Interrogation',
+            text: 'If your entire data pipeline vanished, how long would it take to rebuild 80% of your production models? (The true cost of technical debt is measured in months of market blindness.)'
+        },
+        {
+            type: 'Question to Ponder',
+            title: 'Foundation Model Auditing',
+            text: 'How do we audit the "training set" of a large foundation model used for financial forecasting for regulatory bias, fairness, and ethical sourcing?'
+        },
+        {
+            type: 'Question to Ponder',
+            title: 'The CIO\'s New Role',
+            text: 'If alpha generation becomes a fully automated process managed by AI, what is the new primary, non-delegable role of the Chief Investment Officer in a modern firm?'
+        },
+        {
+            type: 'Question to Ponder',
+            title: 'Latency vs. Basis Points',
+            text: 'What is the cost of internal data latency (the delay between data arrival and data readiness) expressed not in milliseconds, but in basis points lost per quarter?'
+        },
+        {
+            type: 'Question to Ponder',
+            title: 'Synthetic Backtesting Limits',
+            text: 'Beyond privacy, how does the ability to generate unlimited synthetic market data fundamentally change the traditional limitations of backtesting and stress modeling?'
+        },
+        {
+            type: 'Question to Ponder',
+            title: 'Optimization Target',
+            text: 'Is your firm optimizing its high-cost, low-latency data infrastructure for "average case" performance (90% of the time) or "worst case" resilience (the 10% when it truly matters)?'
+        },
+        {
+            type: 'Question to Ponder',
+            title: 'Alpha Half-Life',
+            text: 'How long can an innovative data advantage (a unique signal or methodology) reasonably be expected to last before it is commoditized by competitor replication or market efficiency?'
+        },
+        {
+            type: 'Question to Ponder',
+            title: 'Governance ROI',
+            text: 'What measurable, financially relevant Key Performance Indicator (KPI) determines whether your massive investment in data governance and quality has yielded a positive Return on Investment (ROI)?'
+        },
+        {
+            type: 'Question to Ponder',
+            title: 'The Talent Gap Trap',
+            text: 'Are you hiring talent to fill current skill gaps, or are you strategically hiring for future capabilities that will only become mandatory in the next three to five years?'
+        },
+        {
+            type: 'Question to Ponder',
+            title: 'Defining Risk-Adjusted Data',
+            text: 'If models are trained on historical data, how do you mathematically define and incorporate "risk-adjusted data" to ensure the model performs safely in genuinely novel market regimes?'
+        },
+
+        // --- 4 Curated Links ---
+        { 
+            type: 'Link', 
+            title: 'Portfolio Visualizer: Backtesting Tool', 
+            url: 'https://www.portfoliovisualizer.com/analysis', 
+            text: 'A professional tool for backtesting and analyzing modern portfolio performance and asset allocation strategies.' 
+        },
+        { 
+            type: 'Link', 
+            title: 'Data Mesh Architecture (Martin Fowler)', 
+            url: 'https://martinfowler.com/articles/data-monolith-to-mesh.html', 
+            text: 'A seminal article discussing the shift from centralized data architectures (monoliths) to a decentralized, domain-oriented Data Mesh approach.' 
+        },
+        { 
+            type: 'Link', 
+            title: 'a16z: Modern Data Infrastructure', 
+            url: 'https://a16z.com/emerging-architectures-for-modern-data-infrastructure/', 
+            text: 'Insights from leading VCs on the emerging technology stack and future-proof architectures for data processing and AI/ML pipelines.' 
+        },
+        { 
+            type: 'Link', 
+            title: 'The FAIR Data Principles', 
+            url: 'https://www.go-fair.org/fair-principles/', 
+            text: 'Reviewing the foundational principles (Findable, Accessible, Interoperable, Reusable) essential for effective data governance and stewardship in regulated industries.' 
+        },
+    ];
+
+    const contentDisplay = document.getElementById('contentDisplay');
+    const curiosityButton = document.getElementById('curiosityButton');
+    let lastIndex = -1;
+
+    function displayRandomContent() {
+        let randomIndex;
+        // Ensure the next content is different from the last one (if possible)
+        do {
+            randomIndex = Math.floor(Math.random() * contentArray.length);
+        } while (randomIndex === lastIndex && contentArray.length > 1);
+        lastIndex = randomIndex;
+
+        const content = contentArray[randomIndex];
+
+        // Ensure the content box is always visible now that links display content too
+        if (contentDisplay.classList.contains('hidden')) {
+            contentDisplay.classList.remove('hidden');
+        }
+        
+        let innerHTML = '';
+
+        if (content.type === 'Link') {
+            const displayUrl = content.url;
+            let hostname = 'External Site';
+            try {
+                hostname = new URL(displayUrl).hostname;
+            } catch (e) {
+                // If URL is malformed, use the fallback string
+            }
+
+            // New logic for links: display description and a button to open in a new tab
+            innerHTML = `
+                <p class="text-sm font-light text-gray-600 uppercase tracking-widest mb-1">${content.type}</p>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">${content.title}</h3>
+                <p class="text-base text-gray-700 leading-relaxed mb-4">${content.text}</p>
+                <a href="${displayUrl}" target="_blank" class="inline-block px-4 py-2 bg-gray-800 text-white text-sm font-medium rounded-lg hover:bg-gray-700 transition duration-150">
+                    Visit Site: ${hostname}
+                </a>
+            `;
+
+        } else {
+            // Existing logic for AI Haiku, Thought, Question to Ponder, Image Viz
+            
+            innerHTML = `
+                <p class="text-sm font-light text-gray-600 uppercase tracking-widest mb-1">${content.type}</p>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">${content.title}</h3>
+            `;
+
+            if (content.type === 'Image Viz') {
+                innerHTML += `
+                    <div class="flex justify-center mb-4">
+                        <img src="${content.img_url}" alt="${content.title} Visualization" class="max-w-full h-auto rounded-md shadow-lg">
+                    </div>
+                `;
+            }
+            
+            innerHTML += `<p class="text-base text-gray-700 leading-relaxed">${content.text}</p>`;
+        }
+        
+        contentDisplay.innerHTML = innerHTML;
+    }
+
+    // Event listener for the button
+    curiosityButton.addEventListener('click', displayRandomContent);
+
+    // Initialization
+    window.onload = function() {
+        // No change needed here, just ensuring the script runs.
+    };
+</script>
+
+</body>
+</html>
